@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.green.yp'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.15.2'
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    implementation 'org.jetbrains:annotations:24.0.0'
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.2.1'
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
